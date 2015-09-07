@@ -1,0 +1,49 @@
+{
+    "DamageTypes" : {
+        "bludgeoning": {
+            "name": "bludgeoning",
+            "description": "Blunt, crushing damage. Weak against armour, but tends toward higher damage overall.",
+            "piercing": 0
+        },
+        "slashing": {
+            "name": "slashing",
+            "description": "Cutting damage. Usefull all-around.",
+            "piercing": 1
+        },
+        "piercing": {
+            "name": "piercing",
+            "description": "Damage focused on a single narrow point. Highly effective against armour, but tends towards lower damage",
+            "piercing": 2
+        },
+        "burning": {
+            "name": "burning",
+            "description": "Damage caused by a source of extreme heat like fire or lava. Tends to be highly-damaging, but inefficient.",
+            "piercing": 1
+        },
+        "freezing": {
+            "name": "freezing",
+            "description": "Cold damage, Bypasses most armour and highly efficient, but tends towards lower damage.",
+            "piercing": 3
+        },
+        "shocking": {
+            "name": "shocking",
+            "description": "Electrical damage. Tends towards low damage per hit, but with multiple attacks per source.",
+            "piercing": 1
+        },
+        "arcane": {
+            "name": "arcane",
+            "description": "Generalized magic energy damage. Efficient and reliable",
+            "piercing": 0
+        },
+        "holy": {
+            "name": "holy",
+            "description": "Righteous damage used mostly by divine spellcasters. Efficient and effective, but tends to come from restrictive sources",
+            "piercing": 1
+        },
+        "dark": {
+            "name": "dark",
+            "description": "Unholy, perverse damage. Excellently efficient, but tends to come with other costs.",
+            "piercing": 3
+        }
+    },
+}
