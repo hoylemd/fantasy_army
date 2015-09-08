@@ -46,4 +46,20 @@
             "piercing": 3
         }
     },
+    "WeaponSpecials": {
+
+    },
+    "Feats": {
+
+    },
+    "Weapons": {
+        "sword": {
+            "name": "Sword",
+            "description": "A long blade attached to a handle. Deals slashing damage",
+            "attack_range": 1,
+            "damage": 7,
+            "rate": 1,
+            "damage_type": "slashing"
+        }
+    }
 }
