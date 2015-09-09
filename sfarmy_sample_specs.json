@@ -1,0 +1,53 @@
+{
+    "DamageTypes" : {
+        "projectile": {
+            "name": "projectile",
+            "description": "",
+            "piercing": 2
+        },
+        "blade": {
+            "name": "blade",
+            "description": "",
+            "piercing": 0
+        },
+        "thermal": {
+            "name": "thermal",
+            "description": "",
+            "piercing": 3
+        },
+        "cryonic": {
+            "name": "cryonic",
+            "description": "",
+            "piercing": 1
+        },
+        "explosion": {
+            "name": "explosion",
+            "description": "",
+            "piercing": 1
+        },
+        "laser": {
+          "name": "laser",
+          "description": "",
+          "piercing": 0
+        },
+        "psionic": {
+          "name": "psionic",
+          "description": "",
+          "piercing": 10
+        }
+    },
+    "WeaponSpecials": {
+
+    },
+    "Feats": {
+
+    },
+    "Weapons": {
+      "pistol": {},
+      "submachine_gun": {},
+      "shotgun": {},
+      "assault_rifle": {},
+      "sniper_rifle": {},
+      "anti-materiel_rifle": {}
+    }
+}
