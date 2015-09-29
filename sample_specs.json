@@ -47,7 +47,22 @@
         }
     },
     "WeaponSpecials": {
-
+      "nimble": {
+        "name": "Nimble",
+        "description": "Soldiers with high Dexterity may gain an attack bonus with this weapon."
+      },
+      "unwieldy": {
+        "name": "Unwieldy",
+        "description": "Soliders equipping this weapon suffer an initiative penalty."
+      },
+      "very_unwieldy": {
+        "name": "Unwieldy",
+        "description": "Soliders equipping this weapon suffer a large initiative penalty."
+      },
+     "slow_reload": {
+        "name": "Slow Reload",
+        "description": "Soldiers must take a 'reload' standard action between attacks with this weapon."
+      }
     },
     "Feats": {
 
@@ -55,11 +70,88 @@
     "Weapons": {
         "sword": {
             "name": "Sword",
-            "description": "A long blade attached to a handle. Deals slashing damage",
+            "description": "A long blade attached to a handle. Deals slashing damage.",
+            "attack_range": 1,
+            "damage": 5,
+            "rate": 1,
+            "damage_type": "slashing",
+            "specials": [
+              "nimble"
+            ]
+        },
+        "war_axe": {
+            "name": "War axe",
+            "description": "A heavy blade attached to a handle. Deals slashing damage.",
+            "attack_range": 1,
+            "damage": 6,
+            "rate": 1,
+            "damage_type": "slashing"
+        },
+        "mace": {
+            "name": "Mace",
+            "description": "A heavy, blunt instrument attached to a handle. Deals bludgeoning damage.",
             "attack_range": 1,
             "damage": 7,
             "rate": 1,
-            "damage_type": "slashing"
+            "damage_type": "bludgeoning",
+            "specials": [
+              "unwieldy"
+            ]
+        },
+        "bow": {
+            "name": "Bow",
+            "description": "A curved piece of flexible material with a string joining the ends, for projecting a missile long distances. Deals piercing damage.",
+            "attack_range": 20,
+            "damage": 4,
+            "rate": 1,
+            "damage_type": "piercing"
+        },
+        "crossbow": {
+            "name": "Crossbow",
+            "description": "A small bow attached to a stock with a firing mechanism. Deals piercing damage.",
+            "attack_range": 15,
+            "damage": 5,
+            "rate": 1,
+            "damage_type": "piercing",
+            "specials": [
+              "slow_reload"
+            ]
+        },
+        "greatsword": {
+            "name": "Greatsword",
+            "description": "A massive version of a Sword. Used with both hands. Deals slashing damage.",
+            "attack_range": 2,
+            "damage": 9,
+            "rate": 1,
+            "damage_type": "slashing",
+            "specials": [
+              "two_handed"
+            ]
+        },
+        "battleaxe": {
+            "name": "Battle Axe",
+            "description": "A massive version of an Axe. Used with both hands. Deals slashing damage.",
+            "attack_range": 2,
+            "damage": 11,
+            "rate": 1,
+            "damage_type": "slashing",
+            "specials": [
+              "two_handed",
+              "unwieldy"
+            ]
+        },
+        "warhammer": {
+            "name": "War Hammer",
+            "description": "A massive version of a mace. Used with both hands. Deals bludgeoning damage.",
+            "attack_range": 2,
+            "damage": 12,
+            "rate": 1,
+            "damage_type": "bludgeoning",
+            "specials": [
+              "two_handed",
+              "very_unwieldy"
+            ]
         }
+
     }
 }
