@@ -1,7 +1,7 @@
 import math
 from pyglet.sprite import Sprite
 from pyglet.window import key
-from physicalobjects import InertialObject
+from game.physicalobjects import InertialObject
 from projectile import Projectile
 
 

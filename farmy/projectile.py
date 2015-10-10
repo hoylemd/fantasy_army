@@ -1,5 +1,5 @@
 from pyglet import clock
-from physicalobjects import InertialObject
+from game.physicalobjects import InertialObject
 
 
 class Projectile(InertialObject):

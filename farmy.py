@@ -1,5 +1,5 @@
 import pyglet
-from game import load
+from farmy import load
 from settings import (
     WINDOW_WIDTH, WINDOW_HEIGHT, TOPBAR_VERTICAL_OFFSET,
     WINDOW_HORIZONTAL_CENTER)

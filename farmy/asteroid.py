@@ -1,5 +1,5 @@
 from random import randint, uniform
-from physicalobjects import InertialObject
+from game.physicalobjects import InertialObject
 
 
 class Asteroid(InertialObject):

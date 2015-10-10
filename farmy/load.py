@@ -1,7 +1,7 @@
 import pyglet
+from game import utils
 import random
 import resources
-import utils
 from asteroid import Asteroid
 from player import Player
 from settings import (
