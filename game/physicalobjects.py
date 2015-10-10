@@ -1,5 +1,4 @@
 import pyglet
-from settings import WINDOW_WIDTH, WINDOW_HEIGHT
 import game.utils as utils
 
 
@@ -17,22 +16,6 @@ class InertialObject(pyglet.sprite.Sprite):
         self.rotation_speed = 0.0
 
         self.new_objects = []
-
-    def loop_position(self):
-        x_min_margin = - self.image.width / 2.0
-        y_min_margin = - self.image.height / 2.0
-        x_max_margin = WINDOW_WIDTH - x_min_margin
-        y_max_margin = WINDOW_HEIGHT - y_min_margin
-
-        if self.x < x_min_margin:
-            self.x = x_max_margin
-        elif self.x > x_max_margin:
-            self.x = x_min_margin
-
-        if self.y < y_min_margin:
-            self.y = y_max_margin
-        elif self.y > y_max_margin:
-            self.y = y_min_margin
 
     def die(self, dt=0.0):
         self.dead = True
@@ -57,8 +40,6 @@ class InertialObject(pyglet.sprite.Sprite):
 
         self.rotation += self.rotation_speed * dt
         self.rotation = utils.normalize_degrees(self.rotation)
-
-        self.loop_position()
 
     def __str__(self):
         form = "%s named '%s': p:(%.2f, %.2f) v:(%.2f, %.2f), r:%.2f, dr:%.2f"
