@@ -1,4 +1,5 @@
-from game import load, utils
+from game import utils
+from farmy import load
 from settings import WINDOW_HORIZONTAL_CENTER, WINDOW_VERTICAL_CENTER
 
 

@@ -1,6 +1,6 @@
 from mock import patch
-from game.projectile import Projectile
-from game import resources
+from farmy.projectile import Projectile
+from farmy import resources
 
 
 def test_init():
@@ -12,7 +12,7 @@ def test_init():
     assert sut.y == 200.0
 
 
-@patch('game.projectile.clock')
+@patch('farmy.projectile.clock')
 def test_init__dies_after_default_time(mock_clock):
     sut = Projectile(name="bullet", img=resources.bullet_image,
                      x=100.0, y=200.0)
@@ -20,7 +20,7 @@ def test_init__dies_after_default_time(mock_clock):
     mock_clock.schedule_once.assert_called_with(sut.die, 0.5)
 
 
-@patch('game.projectile.clock')
+@patch('farmy.projectile.clock')
 def test_init__dies_after_set_time(mock_clock):
     sut = Projectile(name="bullet", img=resources.bullet_image,
                      x=100.0, y=200.0, lifespan=1.25)

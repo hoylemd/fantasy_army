@@ -1,9 +1,9 @@
 from mock import MagicMock
 import pyglet
 from pyglet.window import key
-from game.player import Player
-from game import resources
-from tests.scaffolding import fps_to_s, eq_within_epsilon
+from farmy.player import Player
+from farmy import resources
+from tests.utils import fps_to_s, eq_within_epsilon
 
 
 def test_init__initial_values():

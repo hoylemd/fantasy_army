@@ -5,7 +5,7 @@ from mock import MagicMock
 
 
 def test_InertialObject_init__motionless():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     assert sut.velocity_x == 0.0
     assert sut.velocity_y == 0.0
@@ -13,7 +13,7 @@ def test_InertialObject_init__motionless():
 
 
 def test_InertialObject_loop_position__origin():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     assert sut.x == 0
     assert sut.y == 0
@@ -25,7 +25,7 @@ def test_InertialObject_loop_position__origin():
 
 
 def test_InertialObject_loop_position__on_screen():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = 56.3
     sut.y = 174.23
@@ -37,7 +37,7 @@ def test_InertialObject_loop_position__on_screen():
 
 
 def test_InertialObject_loop_position__off_top():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = 56.3
     sut.y = WINDOW_HEIGHT + 30.0
@@ -49,7 +49,7 @@ def test_InertialObject_loop_position__off_top():
 
 
 def test_InertialObject_loop_position__off_bottom():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = 56.3
     sut.y = -30.0
@@ -61,7 +61,7 @@ def test_InertialObject_loop_position__off_bottom():
 
 
 def test_InertialObject_loop_position__off_left():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = -30.0
     sut.y = 156.8
@@ -73,7 +73,7 @@ def test_InertialObject_loop_position__off_left():
 
 
 def test_InertialObject_loop_position__off_right():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = WINDOW_WIDTH + 30.0
     sut.y = 156.8
@@ -85,7 +85,7 @@ def test_InertialObject_loop_position__off_right():
 
 
 def test_InertialObject_update__motionless():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = 23.45
     sut.y = 123.34
@@ -100,7 +100,7 @@ def test_InertialObject_update__motionless():
 
 
 def test_InertialObject_update__forward():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = 23.45
     sut.y = 123.34
@@ -115,7 +115,7 @@ def test_InertialObject_update__forward():
 
 
 def test_InertialObject_update__diagonal():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = 23.45
     sut.y = 123.34
@@ -130,7 +130,7 @@ def test_InertialObject_update__diagonal():
 
 
 def test_InertialObject_update__partial_dt():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.x = 23.45
     sut.y = 123.34
@@ -145,7 +145,7 @@ def test_InertialObject_update__partial_dt():
 
 
 def test_InertialObject_update__motionless_rotation():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.rotation = 0.0
 
@@ -157,7 +157,7 @@ def test_InertialObject_update__motionless_rotation():
 
 
 def test_InertialObject_update__positive_rotation():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.rotation = 0.0
 
@@ -169,7 +169,7 @@ def test_InertialObject_update__positive_rotation():
 
 
 def test_InertialObject_update__negative_rotation():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.rotation = 0.0
 
@@ -181,7 +181,7 @@ def test_InertialObject_update__negative_rotation():
 
 
 def test_InertialObject_update__rotation_partial_dt():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     sut.rotation = 0.0
 
@@ -194,13 +194,13 @@ def test_InertialObject_update__rotation_partial_dt():
 
 class Collider(InertialObject):
     def __init__(self, *args, **kwargs):
-        super(Collider, self).__init__(img=resources.player_image,
+        super(Collider, self).__init__(img=resources.chevron_image,
                                        damaging=True, *args, **kwargs)
 
 
 class Target(InertialObject):
     def __init__(self, *args, **kwargs):
-        super(Target, self).__init__(img=resources.player_image,
+        super(Target, self).__init__(img=resources.chevron_image,
                                      vulnerable=True, *args, **kwargs)
 
 
@@ -257,7 +257,7 @@ def test_InertialObject_collides_with__collision_with_flags():
 
 
 def test_InertialObject_die():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
 
     assert not sut.dead
 
@@ -278,7 +278,7 @@ def test_InertialObject_handleCollision__calls_die():
 
 
 def test_InertialObject_handleCollision__ignores_same_object_type():
-    sut = InertialObject(img=resources.player_image)
+    sut = InertialObject(img=resources.chevron_image)
     collider = InertialObject(img=resources.asteroid_image)
 
     sut.die = MagicMock()

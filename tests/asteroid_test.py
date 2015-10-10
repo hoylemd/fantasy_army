@@ -1,7 +1,6 @@
-from game.asteroid import Asteroid
+from farmy.asteroid import Asteroid
+from farmy import resources
 from tests.physicalobjects_test import Collider
-
-from game import resources
 
 
 def assert_in_range(value, minimum, maximum):
