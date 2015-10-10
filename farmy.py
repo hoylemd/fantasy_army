@@ -31,6 +31,7 @@ def on_draw():
     game_window.clear()
     main_batch.draw()
 
+
 def update(dt):
     new_objects = []
 

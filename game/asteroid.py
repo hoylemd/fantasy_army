@@ -34,7 +34,5 @@ class Asteroid(InertialObject):
 
                 self.new_objects.append(new_asteroid)
 
-        print self.new_objects
-
     def update(self, dt):
         super(Asteroid, self).update(dt)
