@@ -13,4 +13,6 @@ clean :
 	rm -f game/*.pyc
 	rm -f farmy/*.pyc
 	rm -f tests/*.pyc
+	rm -f tests/test_farmy/*.pyc
+	rm -f tests/test_game/*.pyc
 
