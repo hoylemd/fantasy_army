@@ -5,11 +5,12 @@ all : go
 go : $(MAIN)
 	python $(MAIN)
 
-test : tests
+test : clean tests
 	nosetests --pdb tests
 
 clean :
-	rm *.pyc
-	rm game/*.pyc
-	rm tests/*.pyc`
+	rm -f *.pyc
+	rm -f game/*.pyc
+	rm -f farmy/*.pyc
+	rm -f tests/*.pyc
 
