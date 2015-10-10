@@ -6,7 +6,7 @@ go : $(MAIN)
 	python $(MAIN)
 
 test : clean tests
-	nosetests --pdb tests
+	nosetests --pdb
 
 clean :
 	rm -f *.pyc
