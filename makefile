@@ -1,7 +1,9 @@
+MAIN=farmy.py
+
 all : go
 
-go : asteroids.py
-	python asteroids.py
+go : $(MAIN)
+	python $(MAIN)
 
 test : tests
 	nosetests --pdb tests
