@@ -8,6 +8,11 @@ class MockImage(object):
         self.get_region = MagicMock()
 
 
+class RegionBounceImage(object):
+    def get_region(self, x=0.0, y=0.0, width=0.0, height=0.0):
+        return "(%.2f, %.2f)&%.2fx%.2f" % (x, y, width, height)
+
+
 def test_animation_init__set_default_values():
     frame_map = MockImage()
     spec = {'name': 'first', 'frames': 5}
@@ -30,3 +35,47 @@ def test_animation_init__set_default_values():
     assert sut.frame_duration == fps_to_s(30.0)
     assert sut.frame_index == 0
     assert sut.since_last_frame == 0.0
+
+
+def test_animation_init__fps_optional():
+    pass
+
+
+def test_animation_init__valueerror_on_missing_args():
+    pass
+
+
+def test_animation_init__valueerror_on_missing_spec_keys():
+    pass
+
+
+def test_animation_update__no_frame_change():
+    frame_map = RegionBounceImage()
+    spec = {'name': 'first', 'frames': 5}
+
+    sut = Animation(spec=spec, frame_map=frame_map, row=0, width=20, height=30)
+    dt = fps_to_s(30.0) - 0.025
+    first_frame = sut.image
+
+    sut.update(dt)
+
+    assert sut.since_last_frame == dt
+    assert sut.image is first_frame
+
+
+def test_animation_update__advances_frame():
+    frame_map = RegionBounceImage()
+    spec = {'name': 'first', 'frames': 5}
+
+    sut = Animation(spec=spec, frame_map=frame_map, row=0, width=20, height=30)
+    dt = fps_to_s(30.0) + 0.025
+    first_frame = sut.image
+
+    sut.update(dt)
+
+    assert sut.since_last_frame == (dt - fps_to_s(30.0))
+    assert sut.image is not first_frame
+
+
+def test_animation_update__loops_frame():
+    pass

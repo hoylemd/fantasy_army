@@ -1,11 +1,18 @@
 from pyglet.sprite import Sprite
 
 
+
 class Animation(object):
+    """
+        spec format: {'name': 'idle', 'frames': 10 (, fps: 30.0)}
+    """
     def __init__(self, spec=None, frame_map=None, row=0,
                  width=None, height=None):
         if None in [spec, frame_map, width, height]:
             raise ValueError('must pass in arguments')
+
+        if 'name' not in spec or 'frames' not in spec:
+            raise ValueError('keys missing from spec')
 
         # book keeping
         self.name = spec['name']
@@ -35,15 +42,13 @@ class Animation(object):
 
         # number of frames to advance by
         frames_passed = int(since_last_frame / self.frame_duration)
-        if frames_passed or self.image is None:
+        if frames_passed:
             frame_index = (self.frame_index + frames_passed) % len(self.frames)
-
-            self.frame = self.frames[frame_index]
-            self.frame_index = frame_index
 
             # consume time
             since_last_frame -= frames_passed * self.frame_duration
 
+            self.frame_index = frame_index
             self.image = self.frames[frame_index]
 
         # set the state
