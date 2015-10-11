@@ -1,6 +1,5 @@
 from game.physicalobjects import InertialObject
 from game import resources
-from mock import MagicMock
 
 
 def test_InertialObject_init__motionless():
@@ -125,14 +124,8 @@ class Collider(InertialObject):
                                        damaging=True, *args, **kwargs)
 
 
-class Target(InertialObject):
-    def __init__(self, *args, **kwargs):
-        super(Target, self).__init__(img=resources.chevron_image,
-                                     vulnerable=True, *args, **kwargs)
-
-
 def test_InertialObject_collides_with__no_collision():
-    sut = Target()
+    sut = Collider()
     collider = Collider()
 
     sut.x = 200.0
@@ -144,34 +137,8 @@ def test_InertialObject_collides_with__no_collision():
     assert not sut.collides_with(collider)
 
 
-def test_InertialObject_collides_with__collision_not_vulnerable():
+def test_InertialObject_collides_with__collision():
     sut = Collider()
-    collider = Collider()
-
-    sut.x = 200.0
-    sut.y = 300.0
-
-    collider.x = sut.x + ((sut.width + collider.width) / 2.0 - 10)
-    collider.y = sut.y
-
-    assert not sut.collides_with(collider)
-
-
-def test_InertialObject_collides_with__collision_not_damaging():
-    sut = Target()
-    collider = Target()
-
-    sut.x = 200.0
-    sut.y = 300.0
-
-    collider.x = sut.x + ((sut.width + collider.width) / 2.0 - 10)
-    collider.y = sut.y
-
-    assert not sut.collides_with(collider)
-
-
-def test_InertialObject_collides_with__collision_with_flags():
-    sut = Target()
     collider = Collider()
 
     sut.x = 200.0
@@ -191,25 +158,3 @@ def test_InertialObject_die():
     sut.die()
 
     assert sut.dead
-
-
-def test_InertialObject_handleCollision__calls_die():
-    sut = Target()
-    collider = Collider()
-
-    sut.die = MagicMock()
-
-    sut.handle_collision(collider)
-
-    assert sut.die.called
-
-
-def test_InertialObject_handleCollision__ignores_same_object_type():
-    sut = InertialObject(img=resources.chevron_image)
-    collider = InertialObject(img=resources.asteroid_image)
-
-    sut.die = MagicMock()
-
-    sut.handle_collision(collider)
-
-    assert not sut.die.called

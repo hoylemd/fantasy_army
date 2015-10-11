@@ -10,8 +10,6 @@ class InertialObject(pyglet.sprite.Sprite):
 
         self.name = name
         self.dead = False
-        self.vulnerable = vulnerable
-        self.damaging = damaging
         self.velocity_x, self.velocity_y = 0.0, 0.0
         self.rotation_speed = 0.0
 
@@ -26,13 +24,10 @@ class InertialObject(pyglet.sprite.Sprite):
 
         proximity = actual_distance <= collision_distance
 
-        damaged = self.vulnerable and other.damaging
-
-        return (proximity and damaged)
+        return proximity
 
     def handle_collision(self, other):
-        if type(other) != type(self):
-            self.die()
+        pass
 
     def update(self, dt):
         self.x += self.velocity_x * dt
