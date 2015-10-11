@@ -1,6 +1,6 @@
 from mock import MagicMock
 from game.animated_sprite import Animation
-from tests.utils import fps_to_s
+from tests.utils import fps_to_s, eq_within_epsilon
 
 
 class MockImage(object):
@@ -102,8 +102,33 @@ def test_animation_update__advances_frame():
 
 
 def test_animation_update__loops_frame():
-    pass
+    frame_map = RegionBounceImage()
+    spec = {'name': 'first', 'frames': 5}
+
+    sut = Animation(spec=spec, frame_map=frame_map, row=0, width=20, height=30)
+    dt = fps_to_s(30.0) * 5 + 0.01
+    first_frame = sut.image
+
+    sut.update(dt)
+
+    assert eq_within_epsilon(sut.since_last_frame, 0.01)
+    assert sut.image is first_frame
 
 
 def test_animation_update__fps_affects_update_rate():
-    pass
+    frame_map = RegionBounceImage()
+    spec = {'name': 'first', 'frames': 5, 'fps': 15}
+
+    sut = Animation(spec=spec, frame_map=frame_map, row=0, width=20, height=30)
+    dt = fps_to_s(30.0) + 0.01
+    first_frame = sut.image
+
+    sut.update(dt)
+
+    assert sut.since_last_frame == dt
+    assert sut.image is first_frame
+
+    sut.update(dt)
+
+    assert eq_within_epsilon(sut.since_last_frame, 0.02)
+    assert sut.image is not first_frame
