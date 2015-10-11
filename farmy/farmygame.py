@@ -4,8 +4,8 @@ from hero import Hero
 
 
 class FarmyGame(object):
-    def __init__(self):
-        self.window = pyglet.window.Window(fullscreen=True)
+    def __init__(self, fullscreen=True):
+        self.window = pyglet.window.Window(fullscreen=fullscreen)
         self.main_batch = pyglet.graphics.Batch()
 
         player_hero = self.load_player_hero()
