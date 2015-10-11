@@ -19,3 +19,5 @@ center_image(asteroid_image)
 
 engineflame_image.anchor_x = engineflame_image.width / 2.0
 engineflame_image.anchor_y = engineflame_image.height * 2.0
+
+circle_sprite_map = pyglet.resource.image('purplecircle.png')
