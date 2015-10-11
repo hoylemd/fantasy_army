@@ -48,11 +48,29 @@ def test_animation_init__fps_optional():
 
 
 def test_animation_init__valueerror_on_missing_args():
-    pass
+    try:
+        Animation(row=0, width=20, height=30)
+        assert False
+    except ValueError as err:
+        assert err.message == 'must pass in arguments'
+
+    frame_map = MockImage()
+    spec = {'name': 'first', 'frames': 5, 'fps': 17.5}
+    try:
+        Animation(spec=spec, frame_map=frame_map)
+        assert False
+    except ValueError as err:
+        assert err.message == 'must pass in arguments'
 
 
 def test_animation_init__valueerror_on_missing_spec_keys():
-    pass
+    frame_map = MockImage()
+    spec = {}
+    try:
+        Animation(spec=spec, frame_map=frame_map, row=0, width=50.0, height=50.0)
+        assert False
+    except ValueError as err:
+        assert err.message == 'keys missing from spec'
 
 
 def test_animation_update__no_frame_change():
@@ -84,4 +102,8 @@ def test_animation_update__advances_frame():
 
 
 def test_animation_update__loops_frame():
+    pass
+
+
+def test_animation_update__fps_affects_update_rate():
     pass
