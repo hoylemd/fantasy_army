@@ -1,4 +1,4 @@
-from mock import MagicMock
+from mock import MagicMock, patch
 from farmy.farmygame import FarmyGame
 
 
@@ -10,16 +10,19 @@ class MockGameObject(object):
         self.dead = dead
 
 
-def test_farmygame_init():
-    sut = FarmyGame(fullscreen=False)
+@patch('pyglet.window.Window')
+def test_farmygame_init(mock_window):
+    sut = FarmyGame()
 
     assert sut.window is not None
     assert sut.main_batch is not None
     assert len(sut.game_objects)
+    assert mock_window.called
 
 
-def test_farmygame_update__updates_objects():
-    sut = FarmyGame(fullscreen=False)
+@patch('pyglet.window.Window')
+def test_farmygame_update__updates_objects(mock_window):
+    sut = FarmyGame()
     first_obj = MockGameObject()
     second_obj = MockGameObject()
     sut.game_objects.append(first_obj)
@@ -31,8 +34,9 @@ def test_farmygame_update__updates_objects():
     second_obj.update.assert_called_once_with(0.34)
 
 
-def test_farmygame_update__removes_dead():
-    sut = FarmyGame(fullscreen=False)
+@patch('pyglet.window.Window')
+def test_farmygame_update__removes_dead(mock_window):
+    sut = FarmyGame()
     first_obj = MockGameObject()
     second_obj = MockGameObject(dead=True)
     sut.game_objects.append(first_obj)
