@@ -1,5 +1,6 @@
-from mock import MagicMock
-from game.animated_sprite import Animation
+from mock import MagicMock, patch
+from game.animated_sprite import Animation, AnimatedSprite
+from game import resources
 from tests.utils import fps_to_s, eq_within_epsilon
 
 
@@ -132,3 +133,44 @@ def test_animation_update__fps_affects_update_rate():
 
     assert eq_within_epsilon(sut.since_last_frame, 0.02)
     assert sut.image is not first_frame
+
+
+class MockAnimationSpec(object):
+    def __init__(self):
+        self.image = resources.chevron_image
+
+
+@patch('game.animated_sprite.Animation', autospec={'image': resources.chevron_image})
+@patch('game.animated_sprite.AnimatedSprite.update')
+def test_animatedsprite_init__values(animatedsprite_update, mock_animation):
+    spec = [{'name': 'first', 'frames': 5},
+            {'name': 'second', 'frames': 5}]
+    frame_map = resources.chevron_image
+
+    sut = AnimatedSprite(spec=spec, frame_map=frame_map,
+                         frame_width=20, frame_height=30, x=15.0, y=25.0)
+
+    assert sut.frame_width == 20
+    assert sut.frame_height == 30
+    assert sut.spec is spec
+    assert len(sut.animations) == 2
+
+    mock_animation.assert_any_call(spec=spec[0], frame_map=frame_map, row=0,
+                                   width=20, height=30)
+    mock_animation.assert_any_call(spec=spec[1], frame_map=frame_map, row=1,
+                                   width=20, height=30)
+
+    assert sut.current_animation is sut.animations['first']
+    animatedsprite_update.assert_called_once_with(0.0)
+
+
+def test_animatedsprite_init__valueerror_on_missing_args():
+    pass
+
+
+def test_animatedsprite_init__valueerror_on_missing_spec_keys():
+    pass
+
+
+def test_animatedsprite_init__specificed_initial():
+    pass

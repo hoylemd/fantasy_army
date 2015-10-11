@@ -1,7 +1,6 @@
 from pyglet.sprite import Sprite
 
 
-
 class Animation(object):
     """
         spec format: {'name': 'idle', 'frames': 10 (, fps: 30.0)}
@@ -56,9 +55,9 @@ class Animation(object):
 
 
 class AnimatedSprite(Sprite):
-    def __init__(self, frame_map=None, frame_width=None, frame_height=None,
-                 map_spec=None, initial_animation='default', *args, **kwargs):
-        if None in [frame_map, frame_width, frame_height, map_spec]:
+    def __init__(self, spec=None, frame_map=None, initial_animation=None,
+                 frame_width=None, frame_height=None, *args, **kwargs):
+        if None in [frame_map, frame_width, frame_height, spec]:
             raise ValueError('must pass in frames and dimensions')
 
         # save the frame information
@@ -66,25 +65,29 @@ class AnimatedSprite(Sprite):
         self.frame_height = frame_height
 
         # save the spec
-        self.map_spec = map_spec
+        self.spec = spec
 
         # create the animations hash
         self.animations = {}
         i = 0
-        for spec in map_spec:
+        for row in spec:
             # create this animation
             anim = Animation(
-                spec=spec, frame_map=frame_map, row=i,
+                spec=row, frame_map=frame_map, row=i,
                 width=frame_width, height=frame_height)
-            self.animations[anim.name] = anim
+            self.animations[row['name']] = anim
             i += 1
 
         # initialize the first animation
-        self.current_animation = self.animations[initial_animation]
+        if initial_animation in self.animations:
+            self.current_animation = self.animations[initial_animation]
+        else:
+            self.current_animation = self.animations[spec[0]['name']]
 
         self.update(0.0)
 
-        super(AnimatedSprite, self).__init__(img=self.img, *args, **kwargs)
+        super(AnimatedSprite, self).__init__(img=self.current_animation.image,
+                                             *args, **kwargs)
 
     def update(self, dt):
         self.current_animation.update(dt)
