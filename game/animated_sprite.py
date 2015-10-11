@@ -2,8 +2,9 @@ from pyglet.sprite import Sprite
 
 
 class Animation(object):
-    def __init__(self, spec=None, frame_map=None, width=None, height=None):
-        if None in [spec, width, height, frame_map]:
+    def __init__(self, spec=None, frame_map=None, row=0,
+                 width=None, height=None):
+        if None in [spec, frame_map, width, height]:
             raise ValueError('must pass in arguments')
 
         # book keeping
@@ -12,19 +13,18 @@ class Animation(object):
         # frame information
         self.width = width
         self.height = height
-        self.row = spec['row']
 
         # generate the frames
         self.frames = []
         for i in range(spec['frames']):
             x = i * width
-            y = self.row * height
+            y = row * height
             self.frames.append(
                 frame_map.get_region(x=x, y=y, width=width, height=height))
         self.image = self.frames[0]
 
         # timing info
-        self.fps = spec['fps']
+        self.fps = spec['fps'] if 'fps' in spec else 30.0
         self.frame_duration = 1.0 / float(self.fps)
         self.frame_index = 0
         self.since_last_frame = 0.0
@@ -65,12 +65,14 @@ class AnimatedSprite(Sprite):
 
         # create the animations hash
         self.animations = {}
-        for index in map_spec:
+        i = 0
+        for spec in map_spec:
             # create this animation
             anim = Animation(
-                spec=map_spec[index], frame_map=frame_map,
+                spec=spec, frame_map=frame_map, row=i,
                 width=frame_width, height=frame_height)
             self.animations[anim.name] = anim
+            i += 1
 
         # initialize the first animation
         self.current_animation = self.animations[initial_animation]

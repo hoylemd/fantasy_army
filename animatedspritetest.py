@@ -13,12 +13,12 @@ if __name__ == '__main__':
     window = pyglet.window.Window(600, 500)
     batch = pyglet.graphics.Batch()
 
-    map_specification = {
-        'idle': {'name': 'idle', 'row': 0, 'frames': 10, 'fps': 30},
-        'attack': {'name': 'attack', 'row': 1, 'frames': 10, 'fps': 30},
-        'walk': {'name': 'walk', 'row': 2, 'frames': 10, 'fps': 30},
-        'hurt': {'name': 'hurt', 'row': 3, 'frames': 10, 'fps': 30}
-    }
+    map_specification = [
+        {'name': 'idle', 'frames': 10, 'fps': 30},
+        {'name': 'attack', 'frames': 10, 'fps': 30},
+        {'name': 'walk', 'frames': 10, 'fps': 30},
+        {'name': 'hurt', 'frames': 10, 'fps': 30}
+    ]
 
     sprite = AnimatedSprite(frame_map=resources.circle_sprite_map,
                             frame_width=50, frame_height=50,
