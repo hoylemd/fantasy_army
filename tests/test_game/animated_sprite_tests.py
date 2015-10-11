@@ -67,7 +67,7 @@ def test_animation_init__valueerror_on_missing_spec_keys():
     frame_map = MockImage()
     spec = {}
     try:
-        Animation(spec=spec, frame_map=frame_map, row=0, width=50.0, height=50.0)
+        Animation(spec=spec, frame_map=frame_map, row=0, width=50, height=50)
         assert False
     except ValueError as err:
         assert err.message == 'keys missing from spec'
