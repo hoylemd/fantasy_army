@@ -9,6 +9,9 @@ class MockGameObject(object):
         self.new_objects = []
         self.dead = dead
 
+    def add_new(self):
+        self.new_objects.append(MockGameObject())
+
 
 @patch('pyglet.window.Window')
 def test_farmygame_init(mock_window):
@@ -49,3 +52,19 @@ def test_farmygame_update__removes_dead(mock_window):
     assert len(sut.game_objects) == 2
     assert second_obj not in sut.game_objects
     assert second_obj.delete.called
+
+
+@patch('pyglet.window.Window')
+def test_farmygame_update__adds_new(mock_window):
+    sut = FarmyGame()
+    first_obj = MockGameObject()
+    first_obj.add_new()
+    second_obj = MockGameObject()
+    sut.game_objects.append(first_obj)
+    sut.game_objects.append(second_obj)
+
+    assert len(sut.game_objects) == 3
+
+    sut.update(0.34)
+
+    assert len(sut.game_objects) == 4
