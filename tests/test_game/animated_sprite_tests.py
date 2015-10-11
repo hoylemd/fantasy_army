@@ -38,7 +38,13 @@ def test_animation_init__set_default_values():
 
 
 def test_animation_init__fps_optional():
-    pass
+    frame_map = MockImage()
+    spec = {'name': 'first', 'frames': 5, 'fps': 17.5}
+
+    sut = Animation(spec=spec, frame_map=frame_map, row=0, width=20, height=30)
+
+    assert sut.fps == 17.5
+    assert sut.frame_duration == fps_to_s(17.5)
 
 
 def test_animation_init__valueerror_on_missing_args():
