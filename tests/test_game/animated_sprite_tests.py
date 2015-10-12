@@ -135,14 +135,11 @@ def test_animation_update__fps_affects_update_rate():
     assert sut.image is not first_frame
 
 
-class MockAnimationSpec(object):
-    def __init__(self):
-        self.image = resources.chevron_image
-
-
-@patch('game.animated_sprite.Animation', autospec={'image': resources.chevron_image})
+@patch('game.animated_sprite.Animation')
+@patch('game.animated_sprite.Sprite.__init__')
 @patch('game.animated_sprite.AnimatedSprite.update')
-def test_animatedsprite_init__values(animatedsprite_update, mock_animation):
+def test_animatedsprite_init__values(animatedsprite_update, mock_sprite,
+                                     mock_animation):
     spec = [{'name': 'first', 'frames': 5},
             {'name': 'second', 'frames': 5}]
     frame_map = resources.chevron_image
