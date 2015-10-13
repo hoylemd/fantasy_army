@@ -161,8 +161,17 @@ def test_animatedsprite_init__values(animatedsprite_update, mock_sprite,
     animatedsprite_update.assert_called_once_with(0.0)
 
 
-def test_animatedsprite_init__valueerror_on_missing_args():
-    pass
+@patch('game.animated_sprite.Animation')
+@patch('game.animated_sprite.Sprite.__init__')
+@patch('game.animated_sprite.AnimatedSprite.update')
+def test_animatedsprite_init__valueerror_on_missing_args(
+        animatedsprite_update, mock_sprite, mock_animation):
+
+    try:
+        AnimatedSprite(x=15.0, y=25.0)
+        assert False
+    except ValueError as err:
+        assert err.message == 'must pass in spec, frames, and dimensions'
 
 
 def test_animatedsprite_init__valueerror_on_missing_spec_keys():

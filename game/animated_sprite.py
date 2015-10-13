@@ -57,8 +57,11 @@ class Animation(object):
 class AnimatedSprite(Sprite):
     def __init__(self, spec=None, frame_map=None, initial_animation=None,
                  frame_width=None, frame_height=None, *args, **kwargs):
-        if None in [frame_map, frame_width, frame_height, spec]:
-            raise ValueError('must pass in frames and dimensions')
+        if None in [spec, frame_map, frame_width, frame_height]:
+            raise ValueError('must pass in spec, frames, and dimensions')
+
+        if len(spec) < 1:
+            raise ValueError('spec must have at least one row')
 
         # save the frame information
         self.frame_width = frame_width
