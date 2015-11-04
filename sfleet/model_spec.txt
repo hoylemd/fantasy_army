@@ -1,0 +1,6 @@
+This is the complete-ish model spec for sfleet.
+
+A simplified one will follow, with the MVP version
+==================================================
+new type: Scalar
+
