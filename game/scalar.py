@@ -1,33 +1,33 @@
 
 class Scalar(object):
-    def __init__(self, current_value, max_value=None, min_value=None):
-        if max_value is None:
-            self.max_value = float(current_value)
+    def __init__(self, current, max=None, min=None):
+        if max is None:
+            self.max = float(current)
         else:
-            self.max_value = float(max_value)
+            self.max = float(max)
 
-        if min_value is None:
-            self.min_value = float(0)
+        if min is None:
+            self.min = float(0)
         else:
-            self.min_value = float(min_value)
+            self.min = float(min)
 
-        if self.max_value < self.min_value:
-            self.min_value, self.max_value = self.max_value, self.min_value
+        if self.max < self.min:
+            self.min, self.max = self.max, self.min
 
-        self.set_value(current_value)
+        self.set(current)
 
-    def set_value(self, value):
-        if value > self.max_value:
-            value = self.max_value
+    def set(self, value):
+        if value > self.max:
+            value = self.max
 
-        if value < self.min_value:
-            value = self.min_value
+        if value < self.min:
+            value = self.min
 
         self.value = float(value)
         self._calc_fraction()
 
     def _calc_fraction(self):
-        numerator = self.value - self.min_value
-        denominator = self.max_value - self.min_value
+        numerator = self.value - self.min
+        denominator = self.max - self.min
 
         self.fraction = numerator / denominator
