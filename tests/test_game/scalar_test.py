@@ -110,6 +110,12 @@ def test_add__scalar_int():
     assert sut + 2 == 5
 
 
+def test_add__float_scalar_int():
+    sut = Scalar(3.33)
+
+    assert sut + 3 == 6.33
+
+
 def test_add__scalar_float():
     sut = Scalar(7)
 
@@ -117,11 +123,21 @@ def test_add__scalar_float():
 
 
 def test_add__float_scalar():
-    pass
+    sut = Scalar(2.5)
+
+    assert 7.5 + sut == 10.0
 
 
 def test_add__int_scalar():
-    pass
+    sut = Scalar(3)
+
+    assert 2 + sut == 5
+
+
+def test_add__int_float_scalar():
+    sut = Scalar(3.4)
+
+    assert 5 + sut == 8
 
 
 def test_add__scalar_scalar():

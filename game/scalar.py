@@ -1,3 +1,4 @@
+import numbers
 
 class Scalar(object):
     def __init__(self, current, max=None, min=None):
@@ -43,3 +44,9 @@ class Scalar(object):
 
     def __add__(self, other):
         return self.value + other
+
+    def __radd__(self, other):
+        operand = self.value
+        if isinstance(other, numbers.Integral):
+            operand = int(self.value)
+        return other + operand
