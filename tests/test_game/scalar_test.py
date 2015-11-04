@@ -111,7 +111,9 @@ def test_add__scalar_int():
 
 
 def test_add__scalar_float():
-    pass
+    sut = Scalar(7)
+
+    assert sut + 23.65 == 30.65
 
 
 def test_add__float_scalar():
