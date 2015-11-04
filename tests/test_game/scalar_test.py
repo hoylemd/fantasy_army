@@ -72,3 +72,33 @@ def test_init__switched_max_and_min():
     assert sut.max == 8
     assert sut.min == 3
     assert sut.fraction == 0.4
+
+
+def test_convert__string():
+    sut = Scalar(4)
+    assert str(sut) == "4.0"
+
+
+def test_convert__string_decimal():
+    sut = Scalar(4.345)
+    assert str(sut) == "4.345"
+
+
+def test_convert__int():
+    sut = Scalar(3)
+    assert int(sut) == 3
+
+
+def test_convert__int_decimal():
+    sut = Scalar(3.23)
+    assert int(sut) == 3
+
+
+def test_convert__float():
+    sut = Scalar(3)
+    assert float(sut) == 3
+
+
+def test_convert__float_decimal():
+    sut = Scalar(3.23)
+    assert float(sut) == 3.23
