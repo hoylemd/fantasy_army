@@ -40,3 +40,6 @@ class Scalar(object):
 
     def __float__(self):
         return float(self.value)
+
+    def __add__(self, other):
+        return self.value + other

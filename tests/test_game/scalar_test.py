@@ -102,3 +102,25 @@ def test_convert__float():
 def test_convert__float_decimal():
     sut = Scalar(3.23)
     assert float(sut) == 3.23
+
+
+def test_add__scalar_int():
+    sut = Scalar(3)
+
+    assert sut + 2 == 5
+
+
+def test_add__scalar_float():
+    pass
+
+
+def test_add__float_scalar():
+    pass
+
+
+def test_add__int_scalar():
+    pass
+
+
+def test_add__scalar_scalar():
+    pass
