@@ -23,11 +23,11 @@ class Scalar(object):
         if value < self.min_value:
             value = self.min_value
 
-        self.current = float(value)
+        self.value = float(value)
         self._calc_fraction()
 
-    def _calc_fraction(self, value):
-        numerator = value - self.min_value
+    def _calc_fraction(self):
+        numerator = self.value - self.min_value
         denominator = self.max_value - self.min_value
 
         self.fraction = numerator / denominator
