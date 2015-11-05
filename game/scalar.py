@@ -29,10 +29,13 @@ class Scalar(object):
         numerator = self.value - self.min
         denominator = self.max - self.min
 
-        if denominator != 0:
-            self.fraction = numerator / denominator
+        if denominator == 0 and numerator == 0:
+            if self.value == 0:
+                self.fraction = 0.0
+            else:
+                self.fraction = 1.0
         else:
-            self.fraction = 0
+            self.fraction = numerator / denominator
 
     def __str__(self):
         string = str(self.value) + "/"
