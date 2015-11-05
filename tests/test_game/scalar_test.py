@@ -226,3 +226,60 @@ def test_subtract__scalar_float_scalar():
     sut2 = Scalar(4.9)
 
     assert eq_within_epsilon(sut - sut2, -1.9)
+
+
+def test_multiply__scalar_int():
+    sut = Scalar(3)
+
+    assert sut * 2 == 6
+
+
+def test_multiply__float_scalar_int():
+    sut = Scalar(3.33)
+
+    assert eq_within_epsilon(sut * 3, 9.99)
+
+
+def test_multiply__scalar_float():
+    sut = Scalar(7)
+
+    assert sut * 2.5 == 17.5
+
+
+def test_multiply__float_scalar():
+    sut = Scalar(2.5)
+
+    assert 7.5 * sut == 18.75
+
+
+def test_multiply__int_scalar():
+    sut = Scalar(3)
+
+    assert 2 * sut == 6
+
+
+def test_multiply__int_float_scalar():
+    sut = Scalar(3.4)
+
+    assert 5 * sut == 17.0
+
+
+def test_multiply__scalar_scalar():
+    sut = Scalar(3)
+    sut2 = Scalar(6)
+
+    assert sut * sut2 == 18
+
+
+def test_multiply__float_scalar_scalar():
+    sut = Scalar(1.25)
+    sut2 = Scalar(3)
+
+    assert sut * sut2 == 3.75
+
+
+def test_multiply__scalar_float_scalar():
+    sut = Scalar(3)
+    sut2 = Scalar(4.2)
+
+    assert eq_within_epsilon(sut * sut2, 12.6)
