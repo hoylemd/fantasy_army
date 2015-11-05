@@ -74,9 +74,19 @@ def test_init__switched_max_and_min():
     assert sut.fraction == 0.4
 
 
-def test_convert__string():
+def test_convert__string_simple():
     sut = Scalar(4)
-    assert str(sut) == "4.0/(0.0...4.0)"
+    assert str(sut) == "4.0/4.0"
+
+
+def test_convert__string_partial():
+    sut = Scalar(3, max=7.5)
+    assert str(sut) == "3.0/7.5"
+
+
+def test_convert__string_complex():
+    sut = Scalar(2, min=-1, max=20)
+    assert str(sut) == "2.0/[-1.0,20.0]"
 
 
 def test_convert__repr():

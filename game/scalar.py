@@ -36,7 +36,10 @@ class Scalar(object):
 
     def __str__(self):
         string = str(self.value) + "/"
-        string += "(" + str(self.min) + "..." + str(self.max) + ")"
+        if self.min != 0:
+            string += "[" + str(self.min) + "," + str(self.max) + "]"
+        else:
+            string += str(self.max)
         return string
 
     def __repr__(self):
