@@ -76,12 +76,12 @@ def test_init__switched_max_and_min():
 
 def test_convert__string():
     sut = Scalar(4)
-    assert str(sut) == "4.0"
+    assert str(sut) == "4.0/(0.0...4.0)"
 
 
-def test_convert__string_decimal():
+def test_convert__repr():
     sut = Scalar(4.345)
-    assert str(sut) == "4.345"
+    assert repr(sut) == "Scalar(4.345, max=4.345, min=0.0)"
 
 
 def test_convert__int():

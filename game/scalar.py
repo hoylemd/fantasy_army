@@ -1,5 +1,6 @@
 import numbers
 
+
 class Scalar(object):
     def __init__(self, current, max=None, min=None):
         if max is None:
@@ -34,7 +35,16 @@ class Scalar(object):
         self.fraction = numerator / denominator
 
     def __str__(self):
-        return str(self.value)
+        string = str(self.value) + "/"
+        string += "(" + str(self.min) + "..." + str(self.max) + ")"
+        return string
+
+    def __repr__(self):
+        string = "Scalar(" + str(self.value)
+        string += ", max=" + str(self.max)
+        string += ", min=" + str(self.min)
+        string += ")"
+        return string
 
     def __int__(self):
         return int(self.value)
