@@ -75,3 +75,9 @@ class Scalar(object):
 
     def __rmul__(self, other):
         return other * self.value
+
+    def __div__(self, other):
+        return self.value / other
+
+    def __rdiv__(self, other):
+        return other / self.value
