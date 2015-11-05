@@ -6,6 +6,9 @@ go : $(MAIN)
 	python $(MAIN)
 
 test : clean tests
+	nosetests
+
+debug-test: clean tests
 	nosetests -s --pdb
 
 clean :
