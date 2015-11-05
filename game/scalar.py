@@ -63,3 +63,12 @@ class Scalar(object):
         if isinstance(other, numbers.Integral):
             operand = int(self.value)
         return other + operand
+
+    def __sub__(self, other):
+        return self.value - other
+
+    def __rsub__(self, other):
+        operand = self.value
+        if isinstance(other, numbers.Integral):
+            operand = int(self.value)
+        return other - operand
