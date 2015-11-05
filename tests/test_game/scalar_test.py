@@ -74,6 +74,15 @@ def test_init__switched_max_and_min():
     assert sut.fraction == 0.4
 
 
+def test_init__zero():
+    sut = Scalar(0)
+
+    assert sut.value == 0
+    assert sut.max == 0
+    assert sut.min == 0
+    assert sut.fraction == 0
+
+
 def test_convert__string_simple():
     sut = Scalar(4)
     assert str(sut) == "4.0/4.0"
