@@ -1,6 +1,3 @@
-import numbers
-
-
 class Scalar(object):
     def __init__(self, current, max=None, min=None):
         if max is None:
@@ -59,16 +56,10 @@ class Scalar(object):
         return self.value + other
 
     def __radd__(self, other):
-        operand = self.value
-        if isinstance(other, numbers.Integral):
-            operand = int(self.value)
-        return other + operand
+        return other + self.value
 
     def __sub__(self, other):
         return self.value - other
 
     def __rsub__(self, other):
-        operand = self.value
-        if isinstance(other, numbers.Integral):
-            operand = int(self.value)
-        return other - operand
+        return other - self.value

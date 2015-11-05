@@ -147,7 +147,7 @@ def test_add__int_scalar():
 def test_add__int_float_scalar():
     sut = Scalar(3.4)
 
-    assert 5 + sut == 8
+    assert 5 + sut == 8.4
 
 
 def test_add__scalar_scalar():
@@ -204,7 +204,7 @@ def test_subtract__int_scalar():
 def test_subtract__int_float_scalar():
     sut = Scalar(3.4)
 
-    assert 5 - sut == 2
+    assert 5 - sut == 1.6
 
 
 def test_subtract__scalar_scalar():
