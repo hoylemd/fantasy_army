@@ -653,3 +653,8 @@ def test_negate__negative():
     sut = Scalar(-234.23)
 
     assert -sut == 234.23
+
+
+# TODO: mod tests
+
+# TODO: pow tests

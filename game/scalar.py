@@ -114,3 +114,9 @@ class Scalar(object):
 
     def __neg__(self):
         return -self.value
+
+    def __mod__(self, other):
+        pass
+
+    def __pow__(self, other):
+        pass
