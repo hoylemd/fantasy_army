@@ -107,16 +107,16 @@ class Scalar(object):
         return abs(self.value)
 
     def __floordiv__(self, other):
-        pass
+        raise NotImplementedError
 
     def __index__(self):
-        pass
+        raise NotImplementedError
 
     def __neg__(self):
         return -self.value
 
     def __mod__(self, other):
-        pass
+        raise NotImplementedError
 
     def __pow__(self, other):
-        pass
+        raise NotImplementedError
