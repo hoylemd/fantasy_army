@@ -105,3 +105,12 @@ class Scalar(object):
 
     def __abs__(self):
         return abs(self.value)
+
+    def __floordiv__(self, other):
+        pass
+
+    def __index__(self):
+        pass
+
+    def __neg__(self):
+        return -self.value

@@ -636,3 +636,20 @@ def test_abs_negative():
     sut = Scalar(-15.67)
 
     assert abs(sut) == 15.67
+
+
+# TODO: floordiv tests
+
+# TODO: index tests
+
+# negation tests
+def test_negate__positive():
+    sut = Scalar(5)
+
+    assert -sut == -5
+
+
+def test_negate__negative():
+    sut = Scalar(-234.23)
+
+    assert -sut == 234.23
