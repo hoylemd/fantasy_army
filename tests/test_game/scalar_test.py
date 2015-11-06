@@ -585,3 +585,28 @@ def test_equality__not_equal_left():
     sut = Scalar(7)
 
     assert not (3 == sut)
+
+
+# inequality(!=) tests
+def test_inequality__equal():
+    sut = Scalar(71)
+
+    assert not (sut != 71)
+
+
+def test_inequality__not_equal():
+    sut = Scalar(12)
+
+    assert sut != -543
+
+
+def test_inequality__equal_left():
+    sut = Scalar(72.24)
+
+    assert not (72.24 != sut)
+
+
+def test_inequality__not_equal_left():
+    sut = Scalar(2345)
+
+    assert 0.2346 != sut
