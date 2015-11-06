@@ -102,3 +102,6 @@ class Scalar(object):
 
     def __nonzero__(self):
         return True if self.value != 0 else False
+
+    def __abs__(self):
+        return abs(self.value)

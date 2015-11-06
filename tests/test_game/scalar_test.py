@@ -623,3 +623,16 @@ def test_nonzero__zero():
     sut = Scalar(0)
 
     assert not sut
+
+
+# abs tests
+def test_abs__positive():
+    sut = Scalar(2.5)
+
+    assert abs(sut) == 2.5
+
+
+def test_abs_negative():
+    sut = Scalar(-15.67)
+
+    assert abs(sut) == 15.67
