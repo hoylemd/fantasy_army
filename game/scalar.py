@@ -81,3 +81,9 @@ class Scalar(object):
 
     def __rdiv__(self, other):
         return other / self.value
+
+    def __lt__(self, other):
+        return self.value < other
+
+    def __gt__(self, other):
+        return self.value > other

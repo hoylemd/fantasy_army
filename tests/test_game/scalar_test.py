@@ -378,3 +378,51 @@ def test_divide__by_zero_scalar():
         assert True
     else:
         assert False
+
+
+def test_lessthan__first_and_true():
+    sut = Scalar(4)
+
+    assert sut < 6
+
+
+def test_lessthan__first_and_false():
+    sut = Scalar(3)
+
+    assert not(sut < 2)
+
+
+def test_lessthan__second_and_true():
+    sut = Scalar(4)
+
+    assert 3 < sut
+
+
+def test_lessthan__second_and_false():
+    sut = Scalar(3)
+
+    assert not(5 < sut)
+
+
+def test_greaterthan__first_and_true():
+    sut = Scalar(7)
+
+    assert sut > 6
+
+
+def test_greaterthan__first_and_false():
+    sut = Scalar(3)
+
+    assert not(sut > 4)
+
+
+def test_greaterthan__second_and_true():
+    sut = Scalar(2)
+
+    assert 3 > sut
+
+
+def test_greaterthan__second_and_false():
+    sut = Scalar(7)
+
+    assert not(5 > sut)
