@@ -93,3 +93,6 @@ class Scalar(object):
 
     def __ge__(self, other):
         return self.value >= other
+
+    def __eq__(self, other):
+        return self.value == other

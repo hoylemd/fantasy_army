@@ -2,6 +2,7 @@ from tests.utils import eq_within_epsilon
 from game.scalar import Scalar
 
 
+# init tests
 def test_init__simple():
     sut = Scalar(5)
 
@@ -92,6 +93,11 @@ def test_init__zero_denominator():
     assert sut.fraction == 1.0
 
 
+# set tests
+# TODO: add some
+
+
+# conversion tests
 def test_convert__string_simple():
     sut = Scalar(4)
     assert str(sut) == "4.0/4.0"
@@ -132,6 +138,7 @@ def test_convert__float_decimal():
     assert float(sut) == 3.23
 
 
+# addition(+) tests
 def test_add__scalar_int():
     sut = Scalar(3)
 
@@ -189,6 +196,7 @@ def test_add__scalar_float_scalar():
     assert sut + sut2 == 7.9
 
 
+# subtraction(-) tests
 def test_subtract__scalar_int():
     sut = Scalar(3)
 
@@ -246,6 +254,7 @@ def test_subtract__scalar_float_scalar():
     assert eq_within_epsilon(sut - sut2, -1.9)
 
 
+# multiplication(*) tests
 def test_multiply__scalar_int():
     sut = Scalar(3)
 
@@ -303,6 +312,7 @@ def test_multiply__scalar_float_scalar():
     assert eq_within_epsilon(sut * sut2, 12.6)
 
 
+# division(/) tests
 def test_divide__scalar_int():
     sut = Scalar(3)
 
@@ -380,6 +390,7 @@ def test_divide__by_zero_scalar():
         assert False
 
 
+# less-than(<) tests
 def test_less_than__first_and_true():
     sut = Scalar(4)
 
@@ -389,7 +400,7 @@ def test_less_than__first_and_true():
 def test_less_than__first_and_false():
     sut = Scalar(3)
 
-    assert not(sut < 2)
+    assert not (sut < 2)
 
 
 def test_less_than__second_and_true():
@@ -401,9 +412,10 @@ def test_less_than__second_and_true():
 def test_less_than__second_and_false():
     sut = Scalar(3)
 
-    assert not(5 < sut)
+    assert not (5 < sut)
 
 
+# greater-than(>) tests
 def test_greater_than__first_and_true():
     sut = Scalar(7)
 
@@ -413,7 +425,7 @@ def test_greater_than__first_and_true():
 def test_greater_than__first_and_false():
     sut = Scalar(3)
 
-    assert not(sut > 4)
+    assert not (sut > 4)
 
 
 def test_greater_than__second_and_true():
@@ -425,9 +437,10 @@ def test_greater_than__second_and_true():
 def test_greater_than__second_and_false():
     sut = Scalar(7)
 
-    assert not(5 > sut)
+    assert not (5 > sut)
 
 
+# less-than-or-equal(<-) tests
 def test_less_than_or_equal__first_and_true():
     sut = Scalar(4)
 
@@ -455,7 +468,7 @@ def test_less_than_or_equal__first_and_equal_with_float_scalar():
 def test_less_than_or_equal__first_and_false():
     sut = Scalar(3)
 
-    assert not(sut <= 2)
+    assert not (sut <= 2)
 
 
 def test_less_than_or_equal__second_and_true():
@@ -485,9 +498,10 @@ def test_less_than_or_equal__second_and_equal_with_float_scalar():
 def test_less_than_or_equal__second_and_false():
     sut = Scalar(3)
 
-    assert not(5 <= sut)
+    assert not (5 <= sut)
 
 
+# gretaer-than-or-equal(>=) tests
 def test_greater_than_or_equal__first_and_true():
     sut = Scalar(91)
 
@@ -515,7 +529,7 @@ def test_greater_than_or_equal__first_and_equal_with_float_scalar():
 def test_greater_than_or_equal__first_and_false():
     sut = Scalar(-35)
 
-    assert not(sut >= 205)
+    assert not (sut >= 205)
 
 
 def test_greater_than_or_equal__second_and_true():
@@ -545,4 +559,29 @@ def test_greater_than_or_equal__second_and_equal_with_float_scalar():
 def test_greater_than_or_equal__second_and_false():
     sut = Scalar(32)
 
-    assert not(-5 >= sut)
+    assert not (-5 >= sut)
+
+
+# equality(==) tests
+def test_equality__equal():
+    sut = Scalar(3)
+
+    assert sut == 3
+
+
+def test_equality__not_equal():
+    sut = Scalar(7)
+
+    assert not (sut == 3)
+
+
+def test_equality__equal_left():
+    sut = Scalar(3)
+
+    assert 3 == sut
+
+
+def test_equality__not_equal_left():
+    sut = Scalar(7)
+
+    assert not (3 == sut)
