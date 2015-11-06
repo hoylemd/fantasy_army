@@ -380,49 +380,169 @@ def test_divide__by_zero_scalar():
         assert False
 
 
-def test_lessthan__first_and_true():
+def test_less_than__first_and_true():
     sut = Scalar(4)
 
     assert sut < 6
 
 
-def test_lessthan__first_and_false():
+def test_less_than__first_and_false():
     sut = Scalar(3)
 
     assert not(sut < 2)
 
 
-def test_lessthan__second_and_true():
+def test_less_than__second_and_true():
     sut = Scalar(4)
 
     assert 3 < sut
 
 
-def test_lessthan__second_and_false():
+def test_less_than__second_and_false():
     sut = Scalar(3)
 
     assert not(5 < sut)
 
 
-def test_greaterthan__first_and_true():
+def test_greater_than__first_and_true():
     sut = Scalar(7)
 
     assert sut > 6
 
 
-def test_greaterthan__first_and_false():
+def test_greater_than__first_and_false():
     sut = Scalar(3)
 
     assert not(sut > 4)
 
 
-def test_greaterthan__second_and_true():
+def test_greater_than__second_and_true():
     sut = Scalar(2)
 
     assert 3 > sut
 
 
-def test_greaterthan__second_and_false():
+def test_greater_than__second_and_false():
     sut = Scalar(7)
 
     assert not(5 > sut)
+
+
+def test_less_than_or_equal__first_and_true():
+    sut = Scalar(4)
+
+    assert sut <= 6
+
+
+def test_less_than_or_equal__first_and_equal():
+    sut = Scalar(6)
+
+    assert sut <= 6
+
+
+def test_less_than_or_equal__first_and_equal_with_float():
+    sut = Scalar(12)
+
+    assert sut <= 12.0
+
+
+def test_less_than_or_equal__first_and_equal_with_float_scalar():
+    sut = Scalar(2.0)
+
+    assert sut <= 2
+
+
+def test_less_than_or_equal__first_and_false():
+    sut = Scalar(3)
+
+    assert not(sut <= 2)
+
+
+def test_less_than_or_equal__second_and_true():
+    sut = Scalar(4)
+
+    assert 3 <= sut
+
+
+def test_less_than_or_equal__second_and_equal():
+    sut = Scalar(6)
+
+    assert 6 <= sut
+
+
+def test_less_than_or_equal__second_and_equal_with_float():
+    sut = Scalar(8)
+
+    assert 8.0 <= sut
+
+
+def test_less_than_or_equal__second_and_equal_with_float_scalar():
+    sut = Scalar(3.0)
+
+    assert 3 <= sut
+
+
+def test_less_than_or_equal__second_and_false():
+    sut = Scalar(3)
+
+    assert not(5 <= sut)
+
+
+def test_greater_than_or_equal__first_and_true():
+    sut = Scalar(91)
+
+    assert sut >= 6
+
+
+def test_greater_than_or_equal__first_and_equal():
+    sut = Scalar(44)
+
+    assert sut >= 44
+
+
+def test_greater_than_or_equal__first_and_equal_with_float():
+    sut = Scalar(34)
+
+    assert sut >= 34.0
+
+
+def test_greater_than_or_equal__first_and_equal_with_float_scalar():
+    sut = Scalar(-47.0)
+
+    assert sut >= -47
+
+
+def test_greater_than_or_equal__first_and_false():
+    sut = Scalar(-35)
+
+    assert not(sut >= 205)
+
+
+def test_greater_than_or_equal__second_and_true():
+    sut = Scalar(67)
+
+    assert 67 >= sut
+
+
+def test_greater_than_or_equal__second_and_equal():
+    sut = Scalar(26)
+
+    assert 26 >= sut
+
+
+def test_greater_than_or_equal__second_and_equal_with_float():
+    sut = Scalar(-28)
+
+    assert -28.0 >= sut
+
+
+def test_greater_than_or_equal__second_and_equal_with_float_scalar():
+    sut = Scalar(333.0)
+
+    assert 333 >= sut
+
+
+def test_greater_than_or_equal__second_and_false():
+    sut = Scalar(32)
+
+    assert not(-5 >= sut)

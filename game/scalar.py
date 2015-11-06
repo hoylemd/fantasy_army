@@ -87,3 +87,9 @@ class Scalar(object):
 
     def __gt__(self, other):
         return self.value > other
+
+    def __le__(self, other):
+        return self.value <= other
+
+    def __ge__(self, other):
+        return self.value >= other
