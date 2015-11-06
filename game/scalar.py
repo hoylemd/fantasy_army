@@ -99,3 +99,6 @@ class Scalar(object):
 
     def __ne__(self, other):
         return self.value != other
+
+    def __nonzero__(self):
+        return True if self.value != 0 else False

@@ -610,3 +610,16 @@ def test_inequality__not_equal_left():
     sut = Scalar(2345)
 
     assert 0.2346 != sut
+
+
+# truthy tests
+def test_nonzero__nonzero():
+    sut = Scalar(3)
+
+    assert sut
+
+
+def test_nonzero__zero():
+    sut = Scalar(0)
+
+    assert not sut
