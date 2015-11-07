@@ -93,15 +93,27 @@ def test_init__value_out_of_bounds():
 
 # set tests
 def test_set_value__normal():
-    pass
+    sut = Scalar(8)
+
+    sut.value = 5
+
+    assert sut.value == 5
 
 
 def test_set_value__too_low():
-    pass
+    sut = Scalar(4)
+
+    sut.value = -3.5
+
+    assert sut.value == 0
 
 
 def test_set_value__too_high():
-    pass
+    sut = Scalar(6)
+
+    sut.value = 9
+
+    assert sut.value == 6
 
 
 def test_set_min__normal():
