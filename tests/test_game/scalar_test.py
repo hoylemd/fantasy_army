@@ -829,8 +829,6 @@ def test_abs_negative():
     assert abs(sut) == 15.67
 
 
-# TODO: index tests
-
 # negation tests
 def test_negate__positive():
     sut = Scalar(5)
@@ -845,5 +843,40 @@ def test_negate__negative():
 
 
 # TODO: mod tests
+def test_modulo__zero():
+    sut = Scalar(4)
+
+    assert sut % 2 == 0
+
+
+def test_modulo__two():
+    sut = Scalar(8)
+
+    assert sut % 3 == 2
+
+
+def test_modulo__float():
+    sut = Scalar(2.5)
+
+    assert sut % 1 == 0.5
+
+
+def test_modulo__zero_reverse():
+    sut = Scalar(2)
+
+    assert 6 % sut == 0
+
+
+def test_modulo__three_reverse():
+    sut = Scalar(4)
+
+    assert 11 % sut == 3
+
+
+def test_modulo__float_reverse():
+    sut = Scalar(1.25)
+
+    assert 6.5 % sut == 0.25
+
 
 # TODO: pow tests
