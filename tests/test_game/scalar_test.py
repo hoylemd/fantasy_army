@@ -44,11 +44,11 @@ def test_init__negative():
 
 
 def test_init__negative_max():
-    sut = Scalar(-4, max=-12)
+    sut = Scalar(-14, max=-12)
 
-    assert sut.value == -4
-    assert sut.max == 0
-    assert sut.min == -12
+    assert sut.value == -14
+    assert sut.max == -12
+    assert sut.min == -14
 
 
 def test_init__negative_min():
@@ -60,11 +60,12 @@ def test_init__negative_min():
 
 
 def test_init__switched_max_and_min():
-    sut = Scalar(5, max=3, min=8)
-
-    assert sut.value == 5
-    assert sut.max == 8
-    assert sut.min == 3
+    try:
+        Scalar(5, max=3, min=8)
+    except ValueError as err:
+        assert err.message == "max must be >= min"
+    else:
+        assert False
 
 
 def test_init__zero():
@@ -117,27 +118,61 @@ def test_set_value__too_high():
 
 
 def test_set_min__normal():
-    pass
+    sut = Scalar(9)
+
+    sut.min = 3
+
+    assert sut.value == 9
+    assert sut.min == 3
 
 
 def test_set_min__higher_than_value():
-    pass
+    sut = Scalar(5, max=10)
+
+    sut.min = 7
+
+    assert sut.value == 7
+    assert sut.min == 7
 
 
 def test_set_min__higher_than_max():
-    pass
+    sut = Scalar(5)
+
+    try:
+        sut.min = 7
+    except ValueError as err:
+        assert err.message == "min must be <= max"
+    else:
+        assert False
 
 
 def test_set_max__normal():
-    pass
+    sut = Scalar(4)
+
+    sut.max = 7
+
+    assert sut.value == 4
+    assert sut.max == 7
 
 
 def test_set_max__lower_than_value():
-    pass
+    sut = Scalar(7)
+
+    sut.max = 4
+
+    assert sut.value == 4
+    assert sut.max == 4
 
 
 def test_set_max__lower_than_min():
-    pass
+    sut = Scalar(5)
+
+    try:
+        sut.max = -2
+    except ValueError as err:
+        assert err.message == 'max must be >= min'
+    else:
+        assert False
 
 
 # fraction tests
