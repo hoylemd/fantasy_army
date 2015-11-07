@@ -9,7 +9,6 @@ def test_init__simple():
     assert sut.value == 5
     assert sut.max == 5
     assert sut.min == 0
-    assert sut.fraction == 1.0
 
 
 def test_init__and_max():
@@ -18,7 +17,6 @@ def test_init__and_max():
     assert sut.value == 4
     assert sut.max == 12
     assert sut.min == 0
-    assert sut.fraction == (1.0 / 3.0)
 
 
 def test_init__and_min():
@@ -27,7 +25,6 @@ def test_init__and_min():
     assert sut.value == 6.3
     assert sut.max == 6.3
     assert sut.min == 4.23
-    assert sut.fraction == 1.0
 
 
 def test_init__max_and_min():
@@ -36,7 +33,6 @@ def test_init__max_and_min():
     assert sut.value == 12.75
     assert sut.max == 34.23
     assert sut.min == -12.65
-    assert eq_within_epsilon(sut.fraction, 0.5416)
 
 
 def test_init__negative():
@@ -45,7 +41,6 @@ def test_init__negative():
     assert sut.value == -5
     assert sut.max == 0
     assert sut.min == -5
-    assert sut.fraction == 0.0
 
 
 def test_init__negative_max():
@@ -54,7 +49,6 @@ def test_init__negative_max():
     assert sut.value == -4
     assert sut.max == 0
     assert sut.min == -12
-    assert sut.fraction == (2.0 / 3.0)
 
 
 def test_init__negative_min():
@@ -63,7 +57,6 @@ def test_init__negative_min():
     assert sut.value == 6
     assert sut.max == 6
     assert sut.min == -7
-    assert sut.fraction == 1.0
 
 
 def test_init__switched_max_and_min():
@@ -72,7 +65,6 @@ def test_init__switched_max_and_min():
     assert sut.value == 5
     assert sut.max == 8
     assert sut.min == 3
-    assert sut.fraction == 0.4
 
 
 def test_init__zero():
@@ -81,7 +73,6 @@ def test_init__zero():
     assert sut.value == 0
     assert sut.max == 0
     assert sut.min == 0
-    assert sut.fraction == 0
 
 
 def test_init__zero_denominator():
@@ -90,11 +81,76 @@ def test_init__zero_denominator():
     assert sut.value == 5.0
     assert sut.max == 5.0
     assert sut.min == 5.0
-    assert sut.fraction == 1.0
+
+
+def test_init__value_out_of_bounds():
+    sut = Scalar(17, min=5, max=10)
+
+    assert sut.value == 10
+    assert sut.max == 10
+    assert sut.min == 5
 
 
 # set tests
-# TODO: add some
+def test_set_value__normal():
+    pass
+
+
+def test_set_value__too_low():
+    pass
+
+
+def test_set_value__too_high():
+    pass
+
+
+def test_set_min__normal():
+    pass
+
+
+def test_set_min__higher_than_value():
+    pass
+
+
+def test_set_min__higher_than_max():
+    pass
+
+
+def test_set_max__normal():
+    pass
+
+
+def test_set_max__lower_than_value():
+    pass
+
+
+def test_set_max__lower_than_min():
+    pass
+
+
+# fraction tests
+def test_fraction__full():
+    pass
+
+
+def test_fraction__full_and_changed():
+    pass
+
+
+def test_fraction__neat():
+    pass
+
+
+def test_fraction__messy():
+    pass
+
+
+def test_fraction__all_zero():
+    pass
+
+
+def test_fraction__no_range():
+    pass
 
 
 # conversion tests
