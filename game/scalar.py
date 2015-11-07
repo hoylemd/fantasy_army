@@ -166,3 +166,18 @@ class Scalar(object):
     def __isub__(self, other):
         self.value = self._value - other
         return self
+
+    def __imul__(self, other):
+        raise NotImplementedError
+
+    def __idiv__(self, other):
+        raise NotImplementedError
+
+    def __ifloordiv__(self, other):
+        raise NotImplementedError
+
+    def __imod__(self, other):
+        raise NotImplementedError
+
+    def __ipow__(self, other):
+        raise NotImplementedError
