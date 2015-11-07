@@ -158,3 +158,7 @@ class Scalar(object):
 
     def __rpow__(self, other):
         return other ** self._value
+
+    def __iadd__(self, other):
+        self.value = self._value + other
+        return self
