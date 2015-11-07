@@ -130,27 +130,37 @@ def test_set_max__lower_than_min():
 
 # fraction tests
 def test_fraction__full():
-    pass
+    sut = Scalar(4)
+
+    assert sut.fraction == 1.0
 
 
 def test_fraction__full_and_changed():
-    pass
+    sut = Scalar(7, max=10)
 
+    assert sut.fraction == 0.7
 
-def test_fraction__neat():
-    pass
+    sut.value = 10
+
+    assert sut.fraction == 1.0
 
 
 def test_fraction__messy():
-    pass
+    sut = Scalar(34, max=145)
+
+    assert eq_within_epsilon(sut.fraction, 0.23)
 
 
 def test_fraction__all_zero():
-    pass
+    sut = Scalar(0, max=0, min=0)
+
+    assert sut.fraction == 0
 
 
 def test_fraction__no_range():
-    pass
+    sut = Scalar(5, max=5, min=5)
+
+    assert sut.fraction == 1
 
 
 # conversion tests
