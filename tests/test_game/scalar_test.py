@@ -390,6 +390,84 @@ def test_divide__by_zero_scalar():
         assert False
 
 
+# floordiv tests
+def test_floor_divide__scalar_int():
+    sut = Scalar(3)
+
+    assert sut // 2 == 1
+
+
+def test_floor_divide__float_scalar_int():
+    sut = Scalar(3.33)
+
+    assert eq_within_epsilon(sut // 3, 1)
+
+
+def test_floor_divide__scalar_float():
+    sut = Scalar(7)
+
+    assert sut // 2.5 == 2
+
+
+def test_floor_divide__float_scalar():
+    sut = Scalar(2.5)
+
+    assert 7.5 // sut == 3
+
+
+def test_floor_divide__int_scalar():
+    sut = Scalar(3)
+
+    assert eq_within_epsilon(2 // sut, 0)
+
+
+def test_floor_divide__int_float_scalar():
+    sut = Scalar(1.5)
+
+    assert eq_within_epsilon(5 // sut, 3)
+
+
+def test_floor_divide__scalar_scalar():
+    sut = Scalar(6)
+    sut2 = Scalar(3)
+
+    assert sut // sut2 == 2
+
+
+def test_floor_divide__float_scalar_scalar():
+    sut = Scalar(7.5)
+    sut2 = Scalar(3)
+
+    assert sut // sut2 == 2
+
+
+def test_floor_divide__scalar_float_scalar():
+    sut = Scalar(3)
+    sut2 = Scalar(0.5)
+
+    assert sut // sut2 == 6
+
+
+def test_floor_divide__scalar_by_zero():
+    sut = Scalar(2)
+    try:
+        sut // 0
+    except ZeroDivisionError:
+        assert True
+    else:
+        assert False
+
+
+def test_floor_divide__by_zero_scalar():
+    sut = Scalar(0)
+    try:
+        5 // sut
+    except ZeroDivisionError:
+        assert True
+    else:
+        assert False
+
+
 # less-than(<) tests
 def test_less_than__first_and_true():
     sut = Scalar(4)
@@ -637,8 +715,6 @@ def test_abs_negative():
 
     assert abs(sut) == 15.67
 
-
-# TODO: floordiv tests
 
 # TODO: index tests
 
