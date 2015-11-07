@@ -842,7 +842,7 @@ def test_negate__negative():
     assert -sut == 234.23
 
 
-# TODO: mod tests
+# mod tests
 def test_modulo__zero():
     sut = Scalar(4)
 
@@ -879,4 +879,50 @@ def test_modulo__float_reverse():
     assert 6.5 % sut == 0.25
 
 
-# TODO: pow tests
+#  pow tests
+def test_exponent__square():
+    sut = Scalar(2.0)
+
+    assert sut ** 2 == 4
+
+
+def test_exponent__bigger():
+    sut = Scalar(3.76)
+
+    assert eq_within_epsilon(sut ** 8, 39948.71)
+
+
+def test_exponent__changes_sign():
+    sut = Scalar(-3)
+
+    assert sut ** 4 == 81
+
+
+def test_exponent__root():
+    sut = Scalar(9)
+
+    assert sut ** (1.0/2.0) == 3
+
+
+def test_exponent__square_reverse():
+    sut = Scalar(2.0)
+
+    assert 3 ** sut == 9
+
+
+def test_exponent__bigger_reverse():
+    sut = Scalar(3.76)
+
+    assert eq_within_epsilon(8 ** sut, 2486.67)
+
+
+def test_exponent__changes_sign_reverse():
+    sut = Scalar(2)
+
+    assert (-3) ** sut == 9
+
+
+def test_exponent__root_reverse():
+    sut = Scalar(16)
+
+    assert sut ** (1.0/2.0) == 4

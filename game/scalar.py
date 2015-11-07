@@ -154,4 +154,7 @@ class Scalar(object):
         return other % self._value
 
     def __pow__(self, other):
-        raise NotImplementedError
+        return self._value ** other
+
+    def __rpow__(self, other):
+        return other ** self._value
