@@ -162,3 +162,7 @@ class Scalar(object):
     def __iadd__(self, other):
         self.value = self._value + other
         return self
+
+    def __isub__(self, other):
+        self.value = self._value - other
+        return self

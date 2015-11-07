@@ -929,7 +929,7 @@ def test_exponent__root_reverse():
 
 
 # in-place addition tests
-def test_in_place_add__positive():
+def test_in_place_add__ok():
     sut = Scalar(5, max=10)
 
     sut += 3
@@ -960,4 +960,39 @@ def test_in_place_add__reverse():
     probe += sut
 
     assert probe == 12
+    assert sut.value == 5
+
+
+# in-place subtraction tests
+def test_in_place_subtraction__ok():
+    sut = Scalar(5, max=10)
+
+    sut -= 3
+
+    assert sut.value == 2
+
+
+def test_in_place_subtraction__min_bound():
+    sut = Scalar(5)
+
+    sut -= 6
+
+    assert sut.value == 0
+
+
+def test_in_place_subtraction__max_bound():
+    sut = Scalar(3, max=10)
+
+    sut -= -9
+
+    assert sut.value == 10
+
+
+def test_in_place_subtraction__reverse():
+    sut = Scalar(5, max=10)
+
+    probe = 7
+    probe -= sut
+
+    assert probe == 2
     assert sut.value == 5
