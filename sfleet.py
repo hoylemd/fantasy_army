@@ -1,9 +1,9 @@
 import pyglet
-from farmy.farmygame import FarmyGame
+from sfleet.sfleetgame import SfleetGame
 
 
 if __name__ == '__main__':
-    game = FarmyGame()
+    game = SfleetGame()
 
     @game.window.event
     def on_draw():

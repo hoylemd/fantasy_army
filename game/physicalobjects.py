@@ -4,7 +4,7 @@ import game.utils as utils
 
 class InertialObject(pyglet.sprite.Sprite):
 
-    def __init__(self, name="", vulnerable=False, damaging=False,
+    def __init__(self, name="", vulnerable=False, damaging=False, rotation=0,
                  *args, **kwargs):
         super(InertialObject, self).__init__(*args, **kwargs)
 
@@ -12,6 +12,7 @@ class InertialObject(pyglet.sprite.Sprite):
         self.dead = False
         self.velocity_x, self.velocity_y = 0.0, 0.0
         self.rotation_speed = 0.0
+        self.rotation = rotation
 
         self.new_objects = []
 

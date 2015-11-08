@@ -9,9 +9,7 @@ sfleet: $(SFLEET_MAIN)
 farmy : $(FARMY_MAIN)
 	python $(FARMY_MAIN)
 
-all : go
-
-go: $(MAIN)
+all : sfleet
 
 test : clean tests
 	nosetests
@@ -23,6 +21,7 @@ clean :
 	rm -f *.pyc
 	rm -f game/*.pyc
 	rm -f farmy/*.pyc
+	rm -f sfleet/*.pyc
 	rm -f tests/*.pyc
 	rm -f tests/test_farmy/*.pyc
 	rm -f tests/test_game/*.pyc
