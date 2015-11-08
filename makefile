@@ -1,9 +1,17 @@
-MAIN=farmy.py
+FARMY_MAIN=farmy.py
+SFLEET_MAIN=sfleet.py
+
+MAIN=sfleet
+
+sfleet: $(SFLEET_MAIN)
+	python $(SFLEET_MAIN)
+
+farmy : $(FARMY_MAIN)
+	python $(FARMY_MAIN)
 
 all : go
 
-go : $(MAIN)
-	python $(MAIN)
+go: $(MAIN)
 
 test : clean tests
 	nosetests
