@@ -5,7 +5,7 @@ from vessel import Vessel
 
 class SfleetGame(Game):
     def __init__(self, fullscreen=True):
-        super(SfleetGame, self).__init__(fullscreen=fullscreen)
+        super(SfleetGame, self).__init__(fullscreen=fullscreen, name="S Fleet")
 
         self.player_fleet = self.load_player_fleet()
         self.enemy_fleet = self.load_enemy_fleet()

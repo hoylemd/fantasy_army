@@ -2,10 +2,13 @@ import pyglet
 
 
 class Game(object):
-    def __init__(self, fullscreen=True):
+    def __init__(self, fullscreen=True, name="Mike's Game"):
+        self.name = name
+
         self.window = pyglet.window.Window(fullscreen=fullscreen)
         self.main_batch = pyglet.graphics.Batch()
         self.game_objects = []
+        self.console_log = ["Welcome to " + self.name]
 
     def update(self, dt):
         new_objects = []
@@ -24,3 +27,6 @@ class Game(object):
 
         # add new objects
         self.game_objects.extend(new_objects)
+
+    def log(self, message):
+        self.console_log += message
