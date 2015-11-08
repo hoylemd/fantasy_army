@@ -1,5 +1,5 @@
 import pyglet
-import game.utils as utils
+import utils
 
 
 class InertialObject(pyglet.sprite.Sprite):
