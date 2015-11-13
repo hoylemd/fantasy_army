@@ -7,6 +7,7 @@ class Game(object):
 
         self.window = pyglet.window.Window(fullscreen=fullscreen)
         self.main_batch = pyglet.graphics.Batch()
+        self.ui_batch = pyglet.graphics.Batch()
         self.game_objects = []
         self.console_log = ["Welcome to " + self.name]
 
@@ -27,6 +28,11 @@ class Game(object):
 
         # add new objects
         self.game_objects.extend(new_objects)
+
+    def draw(self):
+        self.window.clear()
+        self.main_batch.draw()
+        self.ui_batch.draw()
 
     def log(self, message):
         self.console_log += message
